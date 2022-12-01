@@ -22,7 +22,7 @@ const Navbar = ({ selectedPage, setSelectedPage }) => {
   return (
     <nav className="z-40 w-full fixed top-0 py-6">
       <div className="flex items-center justify-between mx-auto w-5/6">
-        <h4 className='font-playfair text-3xl font-bold'>JE</h4>
+        <h4 className='font-playfair text-3xl font-bold'>CS</h4>
 
         {/* Desktop Navbar */}
         {isAboveSmallScreens ? (
@@ -32,14 +32,83 @@ const Navbar = ({ selectedPage, setSelectedPage }) => {
               selectedPage={selectedPage}
               setSelectedPage={setSelectedPage}
             />
+            <Link
+              page='Skills'
+              selectedPage={selectedPage}
+              setSelectedPage={setSelectedPage}
+            />
+            <Link
+              page='Projects'
+              selectedPage={selectedPage}
+              setSelectedPage={setSelectedPage}
+            />
+            {/* <Link
+              page='Testimonials'
+              selectedPage={selectedPage}
+              setSelectedPage={setSelectedPage}
+            /> */}
+            <Link
+              page='Contact'
+              selectedPage={selectedPage}
+              setSelectedPage={setSelectedPage}
+            />
           </div>
         ) : (
           // Mobile Navbar
-          <div>
+          <button
+            className='rounded-full bg-red p-2'
+            onClick={() => setIsMenuToggled(!isMenuToggled)}
+          >
+            <img alt="menu-icon" src='../assets/menu-icon.svg' />
+          </button>
+        )}
 
+        {/* Mobile Menu Popup */}
+        {!isAboveSmallScreens && isMenuToggled && (
+          <div className='fixed right-0 bottom-0 h-full bg-blue w-[300px]'>
+            {/* Close Icon */}
+            <div className='flex justify-end pr-8 pt-6'>
+              <button
+                className='rounded-full bg-red p-2'
+                onClick={() => setIsMenuToggled(!isMenuToggled)}
+              >
+                <img alt="close-icon" src='../assets/close-icon.svg' />
+              </button>
+            </div>
+
+            {/* Menu items */}
+            <div className='flex flex-col gap-10 ml-[33%] text-xl text-deep-blue'>
+            <Link
+              page='Home'
+              selectedPage={selectedPage}
+              setSelectedPage={setSelectedPage}
+            />
+            <Link
+              page='Skills'
+              selectedPage={selectedPage}
+              setSelectedPage={setSelectedPage}
+            />
+            <Link
+              page='Projects'
+              selectedPage={selectedPage}
+              setSelectedPage={setSelectedPage}
+            />
+            {/* <Link
+              page='Testimonials'
+              selectedPage={selectedPage}
+              setSelectedPage={setSelectedPage}
+            /> */}
+            <Link
+              page='Contact'
+              selectedPage={selectedPage}
+              setSelectedPage={setSelectedPage}
+            />
+            </div>
           </div>
         )}
       </div>
     </nav>
   )
 }
+
+export default Navbar;
