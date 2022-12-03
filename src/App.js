@@ -1,22 +1,21 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import useMediaQuery from './hooks/useMediaQuery';
 import Navbar from './scenes/Navbar';
-import DotGroup from '/scenes/DotGroup';
+import DotGroup from './scenes/DotGroup';
 
 function App() {
   const [selectedPage, setSelectedPage] = useState('home');
-  const isAboveMediumScreens = useMediaQuery({ minWidth: 1060 });
+  const isAboveMediumScreens = useMediaQuery('(min-width: 1060px)');
   const [isTopOfPage, setIsTopOfPage] = useState(true);
 
   useEffect(() => {
     const handleScroll = () => {
-      const isTop = window.scrollY < 0;
-      if (isTop !== isTopOfPage) setIsTopOfPage(isTop);
+      if (window.scrollY === 0) setIsTopOfPage(true);
+      else setIsTopOfPage(false);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [isTopOfPage]);
-
+  }, []);
 
   return <div className="app bg-deep-blue">
     <Navbar
