@@ -1,4 +1,5 @@
 import React from 'react';
+import GithubIcon from '../assets/githubicon.png';
 
 const SocialMediaIcons = () => {
   return (
@@ -17,7 +18,7 @@ const SocialMediaIcons = () => {
         target='_blank'
         rel='noreferrer'
       >
-        <img src='../assets/githubicon.png' alt='github' />
+        <img src={GithubIcon} style={{ width: 30, height: 30, borderRadius: 2}} alt='Github' />
       </a>
     </div>
   )
