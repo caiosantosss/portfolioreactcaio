@@ -6,7 +6,7 @@ import Image from '../assets/profilepic1.jpg'
 import SocialMediaIcons from '../components/SocialMediaIcons';
 
 const Landing = ({ setSelectedPage }) => {
-  const isAboveMediumScreens = useMediaQuery('(min-width: 1024px)');
+  const isAboveMediumScreens = useMediaQuery('(min-width: 1060px)');
 
   return (
     <section id='home' className='md:flex md:justify-between md:items-center md:h-full gap-16 py-10'>
@@ -19,7 +19,7 @@ const Landing = ({ setSelectedPage }) => {
           >
             <img
               alt='profile'
-              className='hover:filter hover:saturate-200 transition duration-500 ease-in-out z-10 w-full max-w-[400px] md:max-w-[600px] rounded-t-[400px] shadow-2xl'
+              className='hover:filter hover:saturate-200 transition duration-500 ease-in-out z-10 w-full max-w-[400px] md:max-w-[400px] rounded-t-[400px] shadow-2xl'
               src={Image}
             />
           </div>
@@ -27,7 +27,7 @@ const Landing = ({ setSelectedPage }) => {
           <div>
             <img
               alt='profile'
-              className='hover:filter hover:saturate-200 transition duration-500 ease-in-out z-10 w-full max-w-[400px] md:max-w-[600px] rounded-t-[400px] shadow-2xl'
+              className='hover:filter hover:saturate-200 transition duration-500 ease-in-out z-10 w-full max-w-[400px] md:max-w-[400px] rounded-t-[400px] shadow-2xl'
               src={Image}
             />
           </div>
