@@ -78,7 +78,7 @@ const Projects = () => {
           <div
             className='flex justify-center text-center items-center p-10 bg-red max-w-[400px] max-h-[400px] text-2xl font-playfair font-semibold'
           >
-            Test projects
+            Test projects show up at front
           </div>
           <Project title='Project 1' />
           <Project title='Project 2' />
@@ -95,7 +95,7 @@ const Projects = () => {
           <div
             className='flex justify-center text-center items-center p-10 bg-blue max-w-[400px] max-h-[400px] text-2xl font-playfair font-semibold'
           >
-            Test final projects
+            Show up at the end
           </div>
         </motion.div>
       </div>
