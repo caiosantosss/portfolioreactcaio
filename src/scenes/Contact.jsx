@@ -1,21 +1,16 @@
 import LineGradient from '../components/LineGradient';
-import { useForm } from 'react-hook-form';
+import { useForm, ValidationError } from '@formspree/react';
 import { motion } from 'framer-motion';
 
 const Contact = () => {
-  const {
-    register,
-    trigger,
-    formState: {errors}
-  } = useForm();
-
-  const onSubmit = async (data) => {
-    const isValid = await trigger();
-    if (isValid) {
-      data.preventDefault();
-      console.log(data);
-    }
-  };
+  const [state, handleSubmit] = useForm("meqwqvqe");
+  if (state.succeeded) {
+      return (
+        <div className='flex justify-center items-center h-screen'>
+          <p className='text-4xl font-semibold font-playfair text-yellow'>Thanks for your message!</p>
+        </div>
+      )
+  }
 
   return (
     <section id="contact" className='py-48'>
@@ -69,36 +64,35 @@ const Contact = () => {
           }}
         >
           <form
-            target='_blank'
-            onSubmit={onSubmit}
-            action="https://formsubmit.co/11bc5f27afd9b783f9413af285206f92"
-            method='POST'
+            onSubmit={handleSubmit}
           >
             <input
               className='w-full bg-blue font-semibold placeholder-opaque-black p-3'
               type='text'
               placeholder='NAME'
-              {...register('name', {required: true, maxLength: 100})}
+              id="name"
+              name="name"
+              required
             />
-            {errors.name && (
-              <p className='text-red mt-1'>
-                {errors.name.type === 'required' && 'Name is required'}
-                {errors.name.type === 'maxLength' && 'Name is too long'}
-              </p>
-            )}
+            <ValidationError
+              prefix="Name"
+              field="name"
+              errors={state.errors}
+            />
 
             <input
               className='w-full bg-blue font-semibold placeholder-opaque-black p-3 mt-5'
-              type='text'
+              type='email'
               placeholder='EMAIL'
-              {...register('email', {required: true, pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i})}
+              id="email"
+              name="email"
+              required
             />
-            {errors.email && (
-              <p className='text-red mt-1'>
-                {errors.email.type === 'required' && 'Email is required'}
-                {errors.email.type === 'pattern' && 'Invalid email address'}
-              </p>
-            )}
+            <ValidationError
+              prefix="Email"
+              field="email"
+              errors={state.errors}
+            />
 
             <textarea
               className='w-full bg-blue font-semibold placeholder-opaque-black p-3 mt-5'
@@ -106,17 +100,19 @@ const Contact = () => {
               rows='4'
               cols='50'
               placeholder='MESSAGE'
-              {...register('name', {required: true, maxLength: 2000})}
+              id="message"
+              name="message"
+              required
             />
-            {errors.message && (
-              <p className='text-red mt-1'>
-                {errors.message.type === 'required' && 'Message is required'}
-                {errors.message.type === 'maxLength' && 'Message is too long'}
-              </p>
-            )}
+            <ValidationError
+              prefix="Message"
+              field="message"
+              errors={state.errors}
+            />
 
             <button
               type='submit'
+              disabled={state.submitting}
               className='p-5 bg-yellow font-semibold text-deep-blue mt-5 hover:bg-red hover:text-white transition duration-500'
             >
               Send me a message
