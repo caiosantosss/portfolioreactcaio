@@ -23,7 +23,8 @@ function App() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  return <div className="app bg-deep-blue">
+  return (
+   <div className="app bg-deep-blue">
     <Navbar
       isTopOfPage={isTopOfPage}
       selectedPage={selectedPage}
@@ -51,6 +52,7 @@ function App() {
     </div>
     <Footer />
   </div>
+  );
 }
 
 export default App;
